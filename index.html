@@ -1,1 +1,534 @@
-iiiiii
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Il noise nel design generativo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+
+<body>
+
+
+  <nav>
+    <div class="logo">Noise / Design Generativo</div>
+    <div class="nav-links">
+      <a href="#ricerca">Ricerca / Noise</a>
+      <a href="#design-generativo">Design generativo</a>
+    </div>
+  </nav>
+
+
+  <header class="hero">
+    <canvas id="montiGenerativi"></canvas>
+    <div class="hero-overlay"></div>
+
+
+    <div class="hero-text">
+      <h1>Il noise<br>nel design<br>generativo</h1>
+      <p>
+        Una ricerca sul rumore procedurale come strumento matematico e visivo:
+        dal random al Perlin Noise, fino alle texture generative e ai paesaggi digitali.
+      </p>
+    </div>
+  </header>
+
+
+  <section id="ricerca">
+    <div class="section-label">Ricerca / Noise</div>
+    <h2>Indice teorico</h2>
+
+
+    <div class="grid-two">
+      <p>
+        Il noise non è semplice caos. È una variazione controllata, continua e leggibile,
+        capace di generare forme organiche, texture, superfici, pattern e movimenti.
+      </p>
+
+
+      <div class="index-list">
+        <button class="index-item" data-text="Il random produce valori indipendenti e discontinui. Il noise, invece, crea variazioni più fluide e leggibili. Per questo è utile nel design generativo: permette di ottenere forme naturali, texture e movimenti organici.">
+          <span class="index-number">01</span>
+          <span><h3>Random e Noise</h3><p>Il noise, è una funzione matematica capace di generare variazioni apparentemente casuali ma strutturate. Il random genera variazioniindipendenti e disordinate che non contengono struttura nè continuità spaziale
+apparentemente casuali ma strutturate.</p></span>
+        </button>
+
+
+        <button class="index-item" data-text="Il seed è il valore iniziale che controlla la generazione. Cambiando seed si ottiene un risultato diverso, ma mantenendo lo stesso seed il risultato resta ripetibile.">
+          <span class="index-number">02</span>
+          <span><h3>Step per generare il Noise</h3><p>Per costruire un algoritmo capace di generare noise sufficientemente complesso da risultare
+utile in ambito grafico, è necessario descrivere una sequenza di metodi che definiscono le tipologie di noise via via più sofisticate. </p></span>
+        </button>
+
+
+        <button class="index-item" data-text="La frequenza regola quanto velocemente cambia il noise. L’ampiezza controlla quanto è forte la variazione. Insieme definiscono ritmo, dettaglio e intensità visiva.">
+          <span class="index-number">03</span>
+          <span><h3>Le interpolazioni</h3><p> Sono il processo con cui si costruiscono delle
+funzioni continue a partire da un insieme di punti discreti.</p></span>
+        </button>
+
+
+        <button class="index-item" data-text="Il Perlin Noise genera transizioni morbide tra valori. È molto usato per simulare superfici naturali, nuvole, onde, paesaggi e texture organiche.">
+          <span class="index-number">04</span>
+          <span><h3>Tipi di Noise</h3></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+ <h2>Random e Noise</h2>
+
+
+<div class="text-block random-layout">
+
+
+  <div class="text-card two-columns">
+
+
+    <div class="column-text">
+
+
+      <p>
+        Nel linguaggio comune la parola <strong>noise</strong> indica un disturbo:
+        rumore sonoro, interferenze elettroniche o imperfezioni visive.
+        Il termine deriva dalla teoria dei segnali e dell’elettronica,
+        dove il “rumore” rappresenta una componente casuale e indesiderata
+        che si sovrappone a un segnale utile.
+      </p>
+
+
+      <p>
+        Nel contesto matematico e computazionale il significato cambia completamente.
+        A partire dagli anni ’70 e ’80, con lo sviluppo della computer grafica,
+        questa idea viene reinterpretata: ciò che prima era considerato errore
+        o disturbo diventa uno strumento utile per generare variazioni controllate
+        e complesse.
+      </p>
+
+
+      <p>
+        Un passaggio fondamentale avviene nel 1983 con il lavoro di
+        <strong>Ken Perlin</strong>, che sviluppa il Perlin Noise per il film Tron,
+        con l’obiettivo di evitare immagini troppo artificiali e uniformi.
+      </p>
+
+
+      <p>
+        Il noise, a differenza del caso puro (random), produce continuità:
+        valori vicini nello spazio tendono a essere simili.
+      </p>
+      <p>
+        Il random puro, da solo, non è sufficiente a descrivere questi fenomeni,
+        perché genera variazioni indipendenti e disordinate che non contengono
+        struttura né continuità spaziale.
+      </p>
+      
+      <p>
+        In questo contesto il noise trova applicazione concreta nella generazione
+        di forme e superfici: viene utilizzato per creare variazioni organiche
+        in geometrie digitali, texture, paesaggi virtuali e sistemi parametrici.
+      </p>
+
+
+    </div>
+
+
+    <div class="column-text">
+      <p>
+        Viene utilizzato in:
+      </p>
+
+
+      <ul>
+        <li>Arte generativa</li>
+        <li>Motion graphics</li>
+        <li>Simulazioni naturali</li>
+        <li>Tipografia dinamica</li>
+        <li>Animazione</li>
+        <li>Videogiochi</li>
+        <li>Visualizzazione dati</li>
+        <li>Modellazione tridimensionale</li>
+      </ul>
+
+
+      <p>
+        Il noise può essere interpretato come una funzione che introduce
+        variazioni controllate all’interno di un sistema, collegandosi
+        al concetto di sistema stocastico.
+      </p>
+       <img class="formula-img" src="immagini/trumore.png" alt="trumore">
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+      <div class="text-card step-noise">
+
+
+  <h2>Step per generare il Noise</h2>
+
+
+  <p class="intro-text">
+    Per costruire un algoritmo capace di generare noise sufficientemente
+    complesso da risultare utile in ambito grafico, è necessario descrivere
+    una sequenza di metodi che definiscono tipologie di noise via via più
+    sofisticate.
+  </p>
+  
+<div class="banana-layout">
+
+    <!-- colonna sinistra -->
+    <div class="banana-col-left">
+
+        <img class="banana-diagram"
+        src="immagini/toby.png"
+        alt="Formula noise">
+
+        <p>
+             <p>
+           Nella prima riga si osserva il cosiddetto “white noise”: il segnale oscilla in modo completamente imprevedibile e ogni punto è indipendente dagli altri. Si tratta di un rumore ricco di informazione locale ma privo di qualsiasi struttura globale o continuità spaziale.
+            Nella seconda riga il rumore inizia a essere organizzato in intervalli regolari. I valori non cambiano in modo continuo, ma rimangono costanti all’interno di segmenti definiti, creando quindi una struttura “a blocchi”. 
+        </p>
+        </p>
+
+    </div>
+
+    <!-- colonna destra -->
+    <div class="banana-col-right">
+
+        <p>
+           In questa fase esiste già una suddivisione spaziale del rumore, ma manca ancora una connessione fluida tra le parti: le discontinuità visibili sono infatti dovute all’assenza di interpolazione tra i valori.
+        Successivamente entra in gioco l’interpolazione, che rappresenta il passaggio chiave verso la continuità. L’interpolazione consiste nel collegare i valori casuali in modo graduale, sostituendo i salti netti con transizioni progressive. In questa fase si passa tipicamente a forme di rumore più evolute come il Value Noise e soprattutto il Perlin Noise, in cui la continuità viene costruita tramite funzioni di interpolazione più morbide e strutturate.
+        Nell’ultima riga il segnale diventa ulteriormente più complesso e realistico. Si osservano variazioni su larga scala combinate con dettagli sempre più fini: questo comportamento emerge dalla sovrapposizione di più livelli di noise a frequenze diverse, chiamati ottave. Questo processo è noto come Fractal Noise, e nella sua forma più comune viene implementato come Fractional Brownian Motion (fBm). Ogni ottava aggiunge dettagli progressivamente più piccoli senza alterare la struttura generale, generando così un risultato finale ricco, coerente e naturale.
+  
+        </p>
+
+    </div>
+
+</div>
+ 
+      </div>
+<div class="text-card interpolation-card">
+
+
+  <h2>Le interpolazioni</h2>
+
+
+  <p class="intro-text">
+    L’interpolazione è un concetto fondamentale in matematica,
+    grafica e informatica e serve a costruire valori intermedi
+    tra punti di cui conosciamo già il valore.
+  </p>
+
+
+  <p>
+    In generale, possiamo dire che l’interpolazione è il processo
+    con cui si costruisce una funzione continua a partire da un
+    insieme di punti discreti. In altre parole, invece di avere
+    solo alcuni valori isolati, si crea una regola che permette
+    di calcolare qualsiasi valore compreso tra di essi.
+  </p>
+
+
+  <p>
+    L’idea chiave è questa: si parte da due (o più) valori noti
+    e si definisce il modo in cui avviene il passaggio graduale
+    tra essi. L’interpolazione non inventa valori casuali,
+    ma li calcola seguendo una legge matematica precisa.
+  </p>
+
+
+  <p>
+    Il modo in cui avviene questa transizione determina il tipo
+    di interpolazione e quindi il comportamento visivo del noise.
+  </p>
+
+
+  <div class="interpolation-grid">
+
+
+    <div class="interpolation-type">
+      <h4>01 — Lineare</h4>
+
+
+      <p>
+        L’interpolazione lineare è la forma più semplice.
+        Tra due valori il passaggio avviene lungo una linea retta,
+        cioè a velocità costante.
+      </p>
+
+
+      <p>
+        La variazione è uniforme: ogni piccolo passo nello spazio
+        produce lo stesso cambiamento nel valore.
+      </p>
+       
+      <p>
+        Il risultato è una transizione regolare ma relativamente
+        rigida, in cui il cambiamento di direzione resta visibile
+        nei punti di connessione tra segmenti.
+      </p>
+       <img class="banana-diagram"
+        src="immagini/lineare.png"
+        alt="Interpolazione lineare">
+         <img class="banana-diagram"
+        src="immagini/lineare2.png"
+        alt="Interpolazione lineare">
+
+    </div>
+
+
+    <div class="interpolation-type">
+      <h4>02 — Coseno</h4>
+
+
+      <p>
+        L’interpolazione coseno introduce una curva nel modo in cui
+        si passa da un valore all’altro.
+      </p>
+
+
+      <p>
+        Il cambiamento è più lento all’inizio, accelera nella parte
+        centrale e rallenta nuovamente alla fine.
+      </p>
+
+
+      <p>
+        Il risultato è una transizione più morbida rispetto alla
+        linea retta, perché elimina il cambiamento brusco di
+        pendenza ai bordi.
+      </p>
+      <img class="banana-diagram"
+        src="immagini/coseno.png"
+        alt="Interpolazione coseno">
+         <img class="banana-diagram"
+        src="immagini/coseno2.png"
+        alt="Interpolazione coseno">
+
+    </div>
+
+
+    <div class="interpolation-type">
+      <h4>03 — Cubica</h4>
+
+
+      <p>
+        L’interpolazione cubica è ancora più raffinata e utilizza
+        una funzione polinomiale di terzo grado.
+      </p>
+
+
+      <p>
+        Il passaggio tra i valori non è soltanto continuo nel
+        valore, ma anche nella velocità di cambiamento.
+      </p>
+
+
+      <p>
+        Il risultato è una curva molto fluida, spesso usata in
+        computer grafica e nel Value Noise perché riduce quasi
+        completamente gli artefatti visivi.
+      </p>
+
+
+      <div class="formula-box">
+        f(t)=3t²−2t³
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+        <div class="formula">noise(x · frequency, y · frequency)</div>
+      </div>
+
+<ul class="noise-steps">
+
+    <section id="looping-noise">
+         <!--<div class="section-label">Looping noise</div>-->
+            <h2>Tipi di noise</h2>
+           
+            </p>
+            <!--<div class="looping-gif-wrap">
+            <img src="looping-noise.gif" alt="Looping noise animation" />
+        </div>-->
+   </section>
+
+ <div class="tipopertipo">
+     <h4>Rumore puro non strutturato</h4>
+            <p> 
+            All'estremo base della scala strutturale troviamo i rumori privi di coerenza spaziale o temporale. Dal punto di vista della teoria dei segnali, ogni punto di queste matrici è completamente indipendente da quelli adiacenti.
+
+    <li>
+      <h4>01 — White Noise</h4>
+      <p>
+        Il termine deriva dall'analogia ottica con la luce bianca, la quale contiene l'intero spettro delle frequenze visibili in eguale misura. Nel calcolatore, generare rumore bianco equivale a lanciare un dado per ogni singolo pixel. L'occhio umano percepisce questo fenomeno come un caos "tagliente" e statico, privo di qualsiasi continuità geometrica.
+        La sua funzione di densità di probabilità è costante:
+      </p>
+     
+    </li>
+
+
+    <li>
+      <h4>02 — Block Noise</h4>
+      <p>
+        Dopo il random puro compare una prima organizzazione spaziale del
+        rumore: lo spazio viene suddiviso in intervalli regolari e a ogni
+        intervallo viene assegnato un valore costante.
+      </p>
+
+
+      <p>
+        Il risultato è un rumore strutturato ma ancora discontinuo, spesso
+        definito <strong>Value Noise non interpolato</strong> o
+        <strong>Block Noise</strong>, poiché genera una distribuzione
+        “a blocchi” senza transizioni morbide tra regioni adiacenti.
+      </p>
+
+
+      <p>
+        La continuità visiva non è ancora presente, perché manca
+        l’interpolazione matematica tra i valori vicini.
+      </p>
+    </li>
+
+
+    <li>
+      <h4>Interpolazione</h4>
+
+
+      <p>
+        Successivamente entra in gioco l’interpolazione, che rappresenta
+        il passaggio fondamentale verso la continuità spaziale del rumore.
+      </p>
+
+
+      <p>
+        L’interpolazione consiste nel collegare valori casuali adiacenti
+        in modo graduale, sostituendo le discontinuità brusche con
+        transizioni progressive e leggibili.
+      </p>
+    </li>
+
+
+    <li>
+      <h4>03 — Value Noise</h4>
+
+
+      <p>
+        I valori vengono collegati matematicamente attraverso funzioni
+        di interpolazione. Il risultato è una variazione continua,
+        più adatta alla simulazione di fenomeni naturali.
+      </p>
+    </li>
+
+
+    <li>
+      <h4>04 — Perlin Noise</h4>
+
+
+      <p>
+        Sviluppato da
+        <strong>Ken Perlin</strong>, non interpola direttamente valori
+        casuali ma gradienti distribuiti nello spazio, ottenendo superfici
+        più morbide, organiche e prive di artefatti visivi evidenti.
+      </p>
+
+
+      <p>
+        Grazie a questa continuità controllata, il rumore diventa uno
+        strumento essenziale nella computer grafica, nel design generativo
+        e nella simulazione di texture naturali.
+      </p>
+    </li>
+
+
+     <li>
+      <h4>05 — FRACTAL NOISE</h4>
+
+
+      <p>
+        I valori vengono collegati matematicamente attraverso funzioni
+        di interpolazione. Il risultato è una variazione continua,
+        più adatta alla simulazione di fenomeni naturali.
+      </p>
+    </li>
+   </div>
+
+
+
+ </ul>
+
+
+    
+ 
+
+  <section id="design-generativo">
+    <div class="section-label">Design generativo</div>
+    <h2>Galleria visuale del noise</h2>
+
+
+    <p>
+      Le animazioni mostrano diverse qualità visive del noise: il caos del white noise,
+      la continuità del value noise, la stratificazione del fBM, le celle del Voronoi,
+      e le forme organiche ispirate al Simplex e al Perlin Noise.
+    </p>
+
+
+    <div class="noise-gallery">
+      <div class="noise-card"><canvas id="whiteNoise"></canvas><h3>White Noise</h3></div>
+      <div class="noise-card"><canvas id="valueNoise"></canvas><h3>Value Noise</h3></div>
+      <div class="noise-card"><canvas id="fbmNoise"></canvas><h3>Fractal Brownian Motion</h3></div>
+      <div class="noise-card"><canvas id="voronoiNoise"></canvas><h3>Voronoi Noise</h3></div>
+      <div class="noise-card"><canvas id="simplexNoise"></canvas><h3>Simplex Noise</h3></div>
+      <div class="noise-card"><canvas id="perlinNoise"></canvas><h3>Perlin Noise</h3></div>
+    </div>
+  </section>
+
+
+  <section id="sitografia">
+    <div class="section-label">Fonti</div>
+    <h2>Sitografia</h2>
+
+
+    <ul class="sources">
+      <li><a href="https://thebookofshaders.com/" target="_blank">The Book of Shaders</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://thebookofshaders.com/11/?lan=it" target="_blank">The Book of Shaders — Noise</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://tobyschachman.com/Shadershop/" target="_blank">Toby Schachman, Shadershop</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://www.simonaa.media/tutorials/looping-noise-part-1" target="_blank">Simona A. — Looping Noise Part 1</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/perlin-noise/" target="_blank">Scratchapixel — Perlin Noise</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://iquilezles.org/articles/" target="_blank">Inigo Quilez — Articles</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://mrl.cs.nyu.edu/~perlin/" target="_blank">Ken Perlin — Homepage</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://mrl.cs.nyu.edu/~perlin/noise/" target="_blank">Ken Perlin — Improved Noise</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://www.redblobgames.com/maps/terrain-from-noise/" target="_blank">Red Blob Games — Terrain from Noise</a>. Consultato il 27 maggio 2026.</li>
+      <li><a href="https://weber.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf" target="_blank">Stefan Gustavson — Simplex Noise Demystified</a>. Consultato il 27 maggio 2026.</li>
+    </ul>
+  </section>
+
+
+  <footer>
+    Ricerca sul Noise / Matematica per il Design
+  </footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
