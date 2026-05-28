@@ -158,22 +158,23 @@ funzioni continue a partire da un insieme di punti discreti.</p></span>
         variazioni controllate all’interno di un sistema, collegandosi
         al concetto di sistema stocastico.
       </p>
-       <img class="formula-img" src="immagini/trumore.png" alt="trumore">
+    </div>
+
+<div class="formula-box">
+
+  <div class="formula-main">
+    y = 2x + ε
+  </div>
+
+  <div class="formula-description">
+    ε = termine di rumore
+  </div>
       </div>
     </div>
 
 
-  </div>
-
 
 </div>
-
-
-
-
-
-
-
 
       <div class="text-card step-noise">
 
@@ -192,33 +193,23 @@ funzioni continue a partire da un insieme di punti discreti.</p></span>
 
     <!-- colonna sinistra -->
     <div class="banana-col-left">
+<img class="formula-img"
+     src="immagini/roby.png"
+     alt="Diagramma noise">
 
-        <img class="banana-diagram"
-        src="immagini/toby.png"
-        alt="Formula noise">
-
-        <p>
-             <p>
-           Nella prima riga si osserva il cosiddetto “white noise”: il segnale oscilla in modo completamente imprevedibile e ogni punto è indipendente dagli altri. Si tratta di un rumore ricco di informazione locale ma privo di qualsiasi struttura globale o continuità spaziale.
-            Nella seconda riga il rumore inizia a essere organizzato in intervalli regolari. I valori non cambiano in modo continuo, ma rimangono costanti all’interno di segmenti definiti, creando quindi una struttura “a blocchi”. 
-        </p>
-        </p>
-
-    </div>
-
-    <!-- colonna destra -->
-    <div class="banana-col-right">
-
-        <p>
-           In questa fase esiste già una suddivisione spaziale del rumore, ma manca ancora una connessione fluida tra le parti: le discontinuità visibili sono infatti dovute all’assenza di interpolazione tra i valori.
-        Successivamente entra in gioco l’interpolazione, che rappresenta il passaggio chiave verso la continuità. L’interpolazione consiste nel collegare i valori casuali in modo graduale, sostituendo i salti netti con transizioni progressive. In questa fase si passa tipicamente a forme di rumore più evolute come il Value Noise e soprattutto il Perlin Noise, in cui la continuità viene costruita tramite funzioni di interpolazione più morbide e strutturate.
-        Nell’ultima riga il segnale diventa ulteriormente più complesso e realistico. Si osservano variazioni su larga scala combinate con dettagli sempre più fini: questo comportamento emerge dalla sovrapposizione di più livelli di noise a frequenze diverse, chiamati ottave. Questo processo è noto come Fractal Noise, e nella sua forma più comune viene implementato come Fractional Brownian Motion (fBm). Ogni ottava aggiunge dettagli progressivamente più piccoli senza alterare la struttura generale, generando così un risultato finale ricco, coerente e naturale.
-  
-        </p>
-
-    </div>
 
 </div>
+
+
+      <p>
+  Nella prima riga si osserva il cosiddetto “white noise”: il segnale oscilla in modo completamente imprevedibile e ogni punto è indipendente dagli altri. Si tratta di un rumore ricco di informazione locale ma privo di qualsiasi struttura globale o continuità spaziale.
+  Nella seconda riga il rumore inizia a essere organizzato in intervalli regolari. I valori non cambiano in modo continuo, ma rimangono costanti all’interno di segmenti definiti, creando quindi una struttura “a blocchi”.
+In questa fase esiste già una suddivisione spaziale del rumore, ma manca ancora una connessione fluida tra le parti: le discontinuità visibili sono infatti dovute all’assenza di interpolazione tra i valori.
+        Successivamente entra in gioco l’interpolazione, che rappresenta il passaggio chiave verso la continuità. L’interpolazione consiste nel collegare i valori casuali in modo graduale, sostituendo i salti netti con transizioni progressive. In questa fase si passa tipicamente a forme di rumore più evolute come il Value Noise e soprattutto il Perlin Noise, in cui la continuità viene costruita tramite funzioni di interpolazione più morbide e strutturate.
+        Nell’ultima riga il segnale diventa ulteriormente più complesso e realistico. Si osservano variazioni su larga scala combinate con dettagli sempre più fini: questo comportamento emerge dalla sovrapposizione di più livelli di noise a frequenze diverse, chiamati ottave. Questo processo è noto come Fractal Noise, e nella sua forma più comune viene implementato come Fractional Brownian Motion (fBm). Ogni ottava aggiunge dettagli progressivamente più piccoli senza alterare la struttura generale, generando così un risultato finale ricco, coerente e naturale.</p>
+
+    </div>
+
  
       </div>
 <div class="text-card interpolation-card">
@@ -257,221 +248,538 @@ funzioni continue a partire da un insieme di punti discreti.</p></span>
   </p>
 
 
-  <div class="interpolation-grid">
+<div class="interpolation-grid">
 
+  <div class="interpolation-type">
+    <h4>01 — Lineare</h4>
 
-    <div class="interpolation-type">
-      <h4>01 — Lineare</h4>
+    <p>
+      L’interpolazione lineare è la forma più semplice.
+      Tra due valori il passaggio avviene lungo una linea retta,
+      cioè a velocità costante.
+    </p>
 
+    <p>
+      La variazione è uniforme: ogni piccolo passo nello spazio
+      produce lo stesso cambiamento nel valore.
+    </p>
 
-      <p>
-        L’interpolazione lineare è la forma più semplice.
-        Tra due valori il passaggio avviene lungo una linea retta,
-        cioè a velocità costante.
-      </p>
+    <p>
+      Il risultato è una transizione regolare ma relativamente
+      rigida, in cui il cambiamento di direzione resta visibile
+      nei punti di connessione tra segmenti.
+    </p>
 
+    <div class="formula-box">
 
-      <p>
-        La variazione è uniforme: ogni piccolo passo nello spazio
-        produce lo stesso cambiamento nel valore.
-      </p>
-       
-      <p>
-        Il risultato è una transizione regolare ma relativamente
-        rigida, in cui il cambiamento di direzione resta visibile
-        nei punti di connessione tra segmenti.
-      </p>
-       <img class="banana-diagram"
-        src="immagini/lineare.png"
-        alt="Interpolazione lineare">
-         <img class="banana-diagram"
-        src="immagini/lineare2.png"
-        alt="Interpolazione lineare">
-
-    </div>
-
-
-    <div class="interpolation-type">
-      <h4>02 — Coseno</h4>
-
-
-      <p>
-        L’interpolazione coseno introduce una curva nel modo in cui
-        si passa da un valore all’altro.
-      </p>
-
-
-      <p>
-        Il cambiamento è più lento all’inizio, accelera nella parte
-        centrale e rallenta nuovamente alla fine.
-      </p>
-
-
-      <p>
-        Il risultato è una transizione più morbida rispetto alla
-        linea retta, perché elimina il cambiamento brusco di
-        pendenza ai bordi.
-      </p>
-      <img class="banana-diagram"
-        src="immagini/coseno.png"
-        alt="Interpolazione coseno">
-         <img class="banana-diagram"
-        src="immagini/coseno2.png"
-        alt="Interpolazione coseno">
-
-    </div>
-
-
-    <div class="interpolation-type">
-      <h4>03 — Cubica</h4>
-
-
-      <p>
-        L’interpolazione cubica è ancora più raffinata e utilizza
-        una funzione polinomiale di terzo grado.
-      </p>
-
-
-      <p>
-        Il passaggio tra i valori non è soltanto continuo nel
-        valore, ma anche nella velocità di cambiamento.
-      </p>
-
-
-      <p>
-        Il risultato è una curva molto fluida, spesso usata in
-        computer grafica e nel Value Noise perché riduce quasi
-        completamente gli artefatti visivi.
-      </p>
-
-
-      <div class="formula-box">
-        f(t)=3t²−2t³
-      </div>
-    </div>
-
-
+  <div class="formula-main">
+    f = a(1 − x) + bx
   </div>
 
+  <div class="formula-description">
+    a = valore iniziale<br>
+    b = valore finale<br>
+    x ∈ [−1,1] = posizione relativa tra i due valori
+  </div>
+
+</div>
+
+<img class="interpolation-image"
+     src="immagini/interpolazione_lineare.png"
+     alt="Interpolazione lineare">
+  </div>
+
+
+  <div class="interpolation-type">
+    <h4>02 — Coseno</h4>
+
+    <p>
+      L’interpolazione coseno introduce una curva nel modo in cui
+      si passa da un valore all’altro.
+    </p>
+
+    <p>
+      Il cambiamento è più lento all’inizio, accelera nella parte
+      centrale e rallenta nuovamente alla fine.
+    </p>
+
+    <p>
+      Il risultato è una transizione più morbida rispetto alla
+      linea retta, perché elimina il cambiamento brusco di
+      pendenza ai bordi.
+    </p>
+
+ <div class="formula-box">
+
+  <div class="formula-main">
+    f(x) = (1 − cos(xπ)) / 2
+  </div>
+
+  <div class="formula-description">
+    cos = funzione coseno<br>
+    x = posizione relativa<br>
+    la curva rende il passaggio più morbido
+  </div>
+
+</div>
+
+<img class="interpolation-image"
+     src="immagini/interpolazione_coseno.png"
+     alt="Interpolazione coseno">
+  </div>
+
+
+  <div class="interpolation-type">
+    <h4>03 — Cubica</h4>
+
+    <p>
+      L’interpolazione cubica è ancora più raffinata e utilizza
+      una funzione polinomiale di terzo grado.
+    </p>
+
+    <p>
+      Il passaggio tra i valori non è soltanto continuo nel
+      valore, ma anche nella velocità di cambiamento.
+    </p>
+
+    <p>
+      Il risultato è una curva molto fluida, spesso usata in
+      computer grafica e nel Value Noise perché riduce quasi
+      completamente gli artefatti visivi.
+    </p>
+
+   <div class="formula-box">
+
+  <div class="formula-main">
+    f(t) = 3t<sup>2</sup> − 2t<sup>3</sup>
+  </div>
+
+  <div class="formula-description">
+    t = posizione normalizzata<br>
+    3t² − 2t³ = curva smoothstep<br>
+    rende la transizione più fluida
+  </div>
+
+</div>
+
+<img class="interpolation-image"
+     src="immagini/interpolazione_cubica.png"
+     alt="Interpolazione cubica">
+  </div>
 
 </div>
 
 
-        <div class="formula">noise(x · frequency, y · frequency)</div>
+ <section id="looping-noise" class="noise-steps">
+  <h2>Tipi di noise</h2>
+
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>01 — White Noise</h4>
+
+    <p>
+      Il termine deriva dall'analogia ottica con la luce bianca, la quale contiene l'intero spettro delle
+      frequenze visibili in eguale misura. Nel calcolatore, generare rumore bianco equivale a lanciare un dado
+      per ogni singolo pixel. L'occhio umano percepisce questo fenomeno come un caos “tagliente” e statico,
+      privo di qualsiasi continuità geometrica.
+    </p>
+
+    <p>
+      Se definiamo il valore di intensità di un pixel come una variabile casuale X, nel rumore bianco standard,
+      X segue una distribuzione uniforme all'interno di un intervallo [a, b] (generalmente [0, 1], dove 0 è il nero
+      e 1 il bianco). La sua funzione di densità di probabilità è costante:
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-main">
+        f(x) = { 1 / (b − a) se a ≤ x ≤ b <br> 0 altrimenti }
       </div>
+      <div class="formula-description">
+        a = limite inferiore dell’intervallo<br>
+        b = limite superiore dell’intervallo<br>
+        f(x) = densità di probabilità uniforme
+      </div>
+    </div>
 
-<ul class="noise-steps">
+    <p>
+      Questa formula significa che i pixel non si influenzano tra loro. Sapere il valore di un pixel non permette
+      di prevedere quello vicino: ogni punto è indipendente dagli altri.
+    </p>
 
-    <section id="looping-noise">
-         <!--<div class="section-label">Looping noise</div>-->
-            <h2>Tipi di noise</h2>
-           
-            </p>
-            <!--<div class="looping-gif-wrap">
-            <img src="looping-noise.gif" alt="Looping noise animation" />
-        </div>-->
-   </section>
+    <div class="formula-box">
+      <div class="formula-main">
+        Cov(X<sub>i</sub>, X<sub>j</sub>) = 0 &nbsp;&nbsp; ∀ i ≠ j
+      </div>
+      <div class="formula-description">
+        la covarianza tra valori diversi è nulla<br>
+        i ≠ j indica due posizioni differenti
+      </div>
+    </div>
+  </article>
 
- <div class="tipopertipo">
-     <h4>Rumore puro non strutturato</h4>
-            <p> 
-            All'estremo base della scala strutturale troviamo i rumori privi di coerenza spaziale o temporale. Dal punto di vista della teoria dei segnali, ogni punto di queste matrici è completamente indipendente da quelli adiacenti.
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>02 — Gaussian Noise</h4>
 
-    <li>
-      <h4>01 — White Noise</h4>
-      <p>
-        Il termine deriva dall'analogia ottica con la luce bianca, la quale contiene l'intero spettro delle frequenze visibili in eguale misura. Nel calcolatore, generare rumore bianco equivale a lanciare un dado per ogni singolo pixel. L'occhio umano percepisce questo fenomeno come un caos "tagliente" e statico, privo di qualsiasi continuità geometrica.
-        La sua funzione di densità di probabilità è costante:
-      </p>
-     
-    </li>
+    <p>
+      Il rumore gaussiano mantiene il principio di indipendenza statistica tra i pixel (Cov = 0), ma ne modifica
+      la frequenza di distribuzione dei valori. I valori non sono equiprobabili, ma seguono una distribuzione normale.
+    </p>
 
+    <div class="formula-box">
+      <div class="formula-main">
+        f(x) = 1 / (σ√2π) e<sup>−½((x − μ)/σ)<sup>2</sup></sup>
+      </div>
+      <div class="formula-description">
+        μ = media della distribuzione<br>
+        σ = deviazione standard<br>
+        x = valore osservato<br>
+        e = base del logaritmo naturale (≈ 2.71828)<br>
+        f(x) = densità di probabilità della variabile normale
+      </div>
+    </div>
 
-    <li>
-      <h4>02 — Block Noise</h4>
-      <p>
-        Dopo il random puro compare una prima organizzazione spaziale del
-        rumore: lo spazio viene suddiviso in intervalli regolari e a ogni
-        intervallo viene assegnato un valore costante.
-      </p>
+    <p>
+      Impostando la media a un valore intermedio (es. μ = 0.5), i grigi medi avranno una probabilità di occorrenza
+      molto alta, mentre gli estremi (nero puro e bianco puro) saranno confinati nelle code della campana gaussiana.
+      Questo addensamento attorno alla media rende il rumore visivamente più morbido e sfumato rispetto al rumore
+      bianco uniforme, rendendolo ideale per la simulazione della grana fotografica analogica (grain) o del rumore
+      termico dei sensori.
+    </p>
+  </article>
 
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>Gradienti e Interpolazione Spaziale</h4>
 
-      <p>
-        Il risultato è un rumore strutturato ma ancora discontinuo, spesso
-        definito <strong>Value Noise non interpolato</strong> o
-        <strong>Block Noise</strong>, poiché genera una distribuzione
-        “a blocchi” senza transizioni morbide tra regioni adiacenti.
-      </p>
+    <p>
+      Per generare strutture continue nello spazio, la casualità pura non è sufficiente: i punti vicini devono
+      mantenere una relazione tra loro. Se ogni pixel fosse completamente indipendente, il risultato apparirebbe
+      frammentato e privo di continuità.
+    </p>
 
+    <p>
+      Per questo motivo vengono introdotti sistemi basati su griglie di campionamento, nei quali il valore di un
+      punto dipende anche dalla posizione e dall’influenza dei punti circostanti. In questo contesto entrano in gioco
+      due concetti fondamentali: l’interpolazione, cioè il passaggio graduale tra valori vicini, e i gradienti,
+      ovvero direzioni locali che orientano il cambiamento nello spazio.
+    </p>
+  </article>
 
-      <p>
-        La continuità visiva non è ancora presente, perché manca
-        l’interpolazione matematica tra i valori vicini.
-      </p>
-    </li>
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>03 — Value Noise</h4>
 
+    <p>
+      Il Value Noise introduce una prima organizzazione geometrica: la casualità non viene applicata a ogni pixel,
+      ma solo ai nodi discreti di una griglia ideale. I valori dei punti intermedi vengono dedotti matematicamente,
+      producendo una continuità visiva più morbida rispetto al rumore completamente casuale.
+    </p>
 
-    <li>
-      <h4>Interpolazione</h4>
+    <p>
+      Dato un punto x compreso tra due nodi della griglia, definiamo una posizione relativa t, cioè quanto il punto
+      si trova vicino al valore iniziale oppure a quello finale. In modo semplificato possiamo immaginare t come una
+      misura della distanza tra due punti:
+    </p>
 
+    <div class="formula-box">
+      <div class="formula-main">
+        t = x − i
+      </div>
+      <div class="formula-description">
+        x = posizione continua<br>
+        i = punto iniziale (indice intero)<br>
+        t = posizione relativa tra due punti
+      </div>
+    </div>
 
-      <p>
-        Successivamente entra in gioco l’interpolazione, che rappresenta
-        il passaggio fondamentale verso la continuità spaziale del rumore.
-      </p>
+    <p>
+      Dove i rappresenta il nodo iniziale della griglia e t indica la posizione relativa tra i due punti. Se t è vicino
+      a 0, il valore sarà più simile al punto iniziale; se t è vicino a 1, il risultato tenderà al punto finale.
+    </p>
 
+    <p>
+      Per unire i due valori casuali associati ai nodi della griglia si utilizza una semplice interpolazione lineare
+      che da sola produce transizioni leggermente rigide nei punti di giunzione. Per ottenere una variazione più morbida
+      e naturale, la variabile t viene filtrata attraverso una funzione di smoothing cubica.
+    </p>
 
-      <p>
-        L’interpolazione consiste nel collegare valori casuali adiacenti
-        in modo graduale, sostituendo le discontinuità brusche con
-        transizioni progressive e leggibili.
-      </p>
-    </li>
+    <p>
+      Il limite del Value Noise è la sua rigidità: poiché i massimi e i minimi sono vincolati ai nodi fissi, la texture
+      rivela una struttura ortogonale “a blocchi”, risultando artificiale.
+    </p>
+  </article>
 
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>04 — Perlin Noise</h4>
 
-    <li>
-      <h4>03 — Value Noise</h4>
+    <p>
+      Sviluppato da Ken Perlin nel 1983, questo algoritmo risolve i limiti del Value Noise compiendo un cambio di
+      paradigma: ai nodi della griglia non si assegnano altezze stabili, ma vettori gradiente pseudo-casuali di lunghezza
+      unitaria. Il valore finale non nasce dall'interpolazione diretta dei punti, ma dall'influenza direzionale delle pendenze.
+    </p>
 
+    <p>
+      Immaginiamo un punto x = 0.3 compreso tra due nodi della griglia, ad esempio tra 0 e 1. Nel Value Noise i nodi
+      contenevano valori fissi, mentre nel Perlin Noise ogni nodo possiede una direzione locale, cioè una pendenza che
+      indica in quale direzione il rumore tende a crescere o diminuire.
+    </p>
 
-      <p>
-        I valori vengono collegati matematicamente attraverso funzioni
-        di interpolazione. Il risultato è una variazione continua,
-        più adatta alla simulazione di fenomeni naturali.
-      </p>
-    </li>
+    <div class="formula-box">
+      <div class="formula-main">
+        y<sub>0</sub> = m<sub>0</sub>x<br>
+        y<sub>1</sub> = m<sub>1</sub>(x − 1)
+      </div>
+      <div class="formula-description">
+        m<sub>0</sub> e m<sub>1</sub> = pendenze dei due nodi<br>
+        x = posizione del punto osservato<br>
+        y<sub>0</sub> e y<sub>1</sub> = influenza esercitata dai due nodi sul punto
+      </div>
+    </div>
 
+    <p>
+      In termini semplici, queste formule descrivono quanto ogni nodo “spinge” il valore finale verso l’alto o verso il
+      basso in base alla propria inclinazione locale. Le due influenze non vengono lasciate separate, ma vengono fuse
+      insieme attraverso una funzione di sfumatura che rende il passaggio morbido e naturale:
+    </p>
 
-    <li>
-      <h4>04 — Perlin Noise</h4>
+    <div class="formula-box">
+      <div class="formula-main">
+        Valore Finale = (1 − S(t))y<sub>0</sub> + S(t)y<sub>1</sub>
+      </div>
+      <div class="formula-description">
+        y<sub>0</sub> = influenza del primo nodo<br>
+        y<sub>1</sub> = influenza del secondo nodo<br>
+        S(t) = funzione di smoothing/interpolazione<br>
+        t = posizione relativa tra i due punti
+      </div>
+    </div>
 
+    <p>
+      Questa formula significa che il valore finale nasce da una combinazione progressiva tra i contributi dei due nodi.
+      La funzione S(t) controlla la morbidezza della transizione: quando il punto è vicino al primo nodo, conta di più
+      y<sub>0</sub>; quando si avvicina al secondo nodo, aumenta l’influenza di y<sub>1</sub>.
+    </p>
+  </article>
 
-      <p>
-        Sviluppato da
-        <strong>Ken Perlin</strong>, non interpola direttamente valori
-        casuali ma gradienti distribuiti nello spazio, ottenendo superfici
-        più morbide, organiche e prive di artefatti visivi evidenti.
-      </p>
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>Ottimizzazione geometrica</h4>
 
+    <p>
+      Il Simplex Noise nasce come evoluzione del Perlin Noise con l’obiettivo di rendere il calcolo del rumore più
+      efficiente e visivamente più uniforme. Introdotto da Ken Perlin nel 2001, questo modello riorganizza il modo in
+      cui lo spazio viene suddiviso, riducendo alcune rigidità geometriche presenti nei sistemi precedenti.
+    </p>
 
-      <p>
-        Grazie a questa continuità controllata, il rumore diventa uno
-        strumento essenziale nella computer grafica, nel design generativo
-        e nella simulazione di texture naturali.
-      </p>
-    </li>
+    <p>
+      In questo contesto, il concetto di ottimizzazione geometrica riguarda sia il modo in cui il rumore viene distribuito
+      nello spazio sia la qualità delle variazioni generate. La struttura utilizzata evita alcune direzioni privilegiate e
+      rende la distribuzione dei valori più omogenea.
+    </p>
+  </article>
 
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>05 — Simplex Noise</h4>
 
-     <li>
-      <h4>05 — FRACTAL NOISE</h4>
+    <p>
+      Il Simplex Noise nasce come evoluzione del Perlin Noise con l’obiettivo di produrre texture più naturali e ridurre
+      alcune rigidità visive presenti nel modello precedente. La differenza principale è che, invece di organizzare lo spazio
+      attraverso una griglia quadrata, utilizza una struttura più semplice e regolare basata su triangoli.
+    </p>
 
+    <p>
+      Nel caso bidimensionale, possiamo immaginare lo spazio suddiviso in una rete di triangoli equilateri. Quando il sistema
+      deve calcolare il valore di un punto, individua semplicemente il triangolo in cui quel punto si trova e misura l’influenza
+      dei suoi vertici vicini.
+    </p>
 
-      <p>
-        I valori vengono collegati matematicamente attraverso funzioni
-        di interpolazione. Il risultato è una variazione continua,
-        più adatta alla simulazione di fenomeni naturali.
-      </p>
-    </li>
-   </div>
+    <p>
+      Dal punto di vista percettivo, il risultato appare più omogeneo: le transizioni sono morbide e non mostrano direzioni
+      privilegiate o pattern troppo geometrici. Questo rende il Simplex Noise particolarmente utile per simulare superfici
+      organiche, texture naturali, paesaggi e movimenti generativi continui.
+    </p>
+
+    <p>
+      Per ogni vertice del triangolo viene calcolata un’influenza locale che dipende dalla distanza tra il nodo e il punto osservato:
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-main">
+        Contributo =
+        (r<sub>max</sub><sup>2</sup> − r<sup>2</sup>)<sup>4</sup>
+        × (g · d)
+      </div>
+      <div class="formula-description">
+        r = distanza tra il punto e il nodo<br>
+        r<sub>max</sub> = distanza massima di influenza<br>
+        g = direzione locale del nodo (gradiente)<br>
+        d = posizione relativa del punto rispetto al nodo<br>
+        g · d = prodotto scalare tra gradiente e direzione
+      </div>
+    </div>
+
+    <p>
+      In termini semplici, questa formula significa che l’influenza di ogni nodo è forte quando il punto è vicino e diminuisce
+      progressivamente man mano che ci si allontana.
+    </p>
+
+    <p>
+      Il valore finale del Simplex Noise nasce poi dalla somma di tutte le influenze dei vertici del triangolo:
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-main">
+        Simplex Noise =
+        Contributo<sub>1</sub> +
+        Contributo<sub>2</sub> +
+        Contributo<sub>3</sub>
+      </div>
+      <div class="formula-description">
+        Contributo<sub>1</sub>, Contributo<sub>2</sub>, Contributo<sub>3</sub> = influenza dei nodi vicini<br>
+        il valore finale nasce dalla somma dei contributi locali
+      </div>
+    </div>
+
+    <p>
+      Questo evita incroci troppo complessi tra i valori e produce una continuità visiva più uniforme rispetto al Perlin Noise,
+      rendendo il risultato finale più naturale e coerente in tutte le direzioni.
+    </p>
+  </article>
+
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>Complessità frattale</h4>
+
+    <p>
+      Un singolo livello di rumore coerente può generare strutture continue, ma spesso risulta troppo uniforme per descrivere
+      fenomeni complessi. Molti sistemi visivi mostrano invece variazioni distribuite su scale differenti: grandi forme generali
+      convivono con dettagli progressivamente più piccoli.
+    </p>
+
+    <p>
+      Per ottenere questo comportamento, il rumore può essere stratificato in più livelli sovrapposti, chiamati ottave, ciascuno
+      con un diverso livello di dettaglio e di influenza sul risultato finale.
+    </p>
+  </article>
+
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>06 — Fractional Brownian Motion</h4>
+
+    <p>
+      La Fractional Brownian Motion, spesso abbreviata come fBm, non è un tipo di noise autonomo, ma un metodo per combinare più
+      livelli di rumore insieme, generalmente basati su Perlin Noise o Simplex Noise.
+    </p>
+
+    <p>
+      Possiamo immaginare il sistema come una costruzione a strati. I primi livelli definiscono le grandi forme generali, mentre
+      quelli successivi aggiungono dettagli sempre più piccoli.
+    </p>
+
+    <p>Il modello matematico può essere descritto come una somma di più livelli di rumore:</p>
+
+    <div class="formula-box">
+      <div class="formula-main">
+        F(x,y) = ∑ A<sub>i</sub> · Noise(xf<sub>i</sub>, yf<sub>i</sub>)
+      </div>
+      <div class="formula-description">
+        A<sub>i</sub> = intensità del contributo di ogni livello<br>
+        Noise() = rumore di base<br>
+        f<sub>i</sub> = frequenza (livello di dettaglio spaziale)<br>
+        x,y = coordinate spaziali del punto osservato
+      </div>
+    </div>
+
+    <p>
+      Ad ogni livello successivo il dettaglio aumenta, mentre l’influenza visiva diminuisce progressivamente. In termini semplici,
+      le forme grandi costruiscono la struttura principale, mentre quelle piccole aggiungono complessità superficiale.
+    </p>
+
+    <div class="formula-box">
+      <div class="formula-main">
+        f<sub>i</sub> = 2<sup>i</sup>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        A<sub>i</sub> = (1/2)<sup>i</sup>
+      </div>
+      <div class="formula-description">
+        f<sub>i</sub> = frequenza del livello i-esimo (cresce ad ogni octave)<br>
+        A<sub>i</sub> = ampiezza/intensità del contributo (diminuisce progressivamente)<br><br>
+        frequenza crescente → dettagli più fini e ravvicinati<br>
+        ampiezza decrescente → piccoli dettagli che arricchiscono la struttura generale
+      </div>
+    </div>
+
+    <p>
+      Dal punto di vista percettivo, il cervello interpreta questa sovrapposizione come qualcosa di naturale, perché ricorda il modo
+      in cui il mondo reale è costruito: grandi forme generali accompagnate da dettagli sempre più piccoli.
+    </p>
+
+    <p>
+      Il Brown Noise puro condivide l’idea dell’accumulo progressivo, ma funziona in maniera diversa: invece di costruire una struttura
+      spaziale a strati, si sviluppa come una sequenza continua di cambiamenti che dipendono dal passo precedente.
+    </p>
+  </article>
+
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>Geometria delle distanze</h4>
+
+    <p>
+      Il Voronoi Noise si distacca dai modelli basati su interpolazione e gradienti per adottare una logica differente: invece di
+      costruire continuità tra punti vicini, organizza lo spazio attraverso relazioni di distanza.
+    </p>
+
+    <p>
+      In questo modello il concetto centrale non è più il passaggio graduale tra valori, ma la misura delle distanze e dei confini
+      tra aree di influenza. Da questa organizzazione emergono strutture cellulari, suddivisioni poligonali e pattern geometrici.
+    </p>
+  </article>
+
+  <article class="noise-block">
+    <hr class="section-divider">
+    <h4>07 — Voronoi Noise</h4>
+
+    <p>
+      Il Voronoi Noise è un tipo di rumore geometrico che, invece di generare transizioni morbide come il Perlin o il Simplex Noise,
+      costruisce strutture nette e cellulari. Il principio di funzionamento è semplice: nello spazio vengono distribuiti alcuni punti
+      di riferimento, chiamati seed o punti di controllo.
+    </p>
+
+    <p>
+      Dal punto di vista percettivo, il risultato appare come una rete di poligoni irregolari simili a cellule, pietre, crepe o
+      strutture biologiche. Per questo motivo il Voronoi Noise viene spesso utilizzato nel design generativo per simulare texture
+      come pelle rettiliana, mosaici, bolle, scaglie, pavimentazioni, fango essiccato o fratture della pietra.
+    </p>
+
+    <p>Matematicamente, per ogni punto osservato si misura la distanza dai punti di controllo vicini:</p>
+
+    <div class="formula-box">
+      <div class="formula-main">
+        d = √((x − x<sub>i</sub>)<sup>2</sup> + (y − y<sub>i</sub>)<sup>2</sup>)
+      </div>
+      <div class="formula-description">
+        d = distanza tra il punto osservato e il seed più vicino<br>
+        x, y = coordinate del punto osservato<br>
+        x<sub>i</sub>, y<sub>i</sub> = coordinate del seed più vicino
+      </div>
+    </div>
+
+    <p>
+      In termini semplici, questa formula misura “quanto un punto sia vicino” a un centro di influenza. La prima distanza, cioè il
+      seed più vicino, definisce la struttura principale delle celle. Quando ogni pixel assume il valore del seed più vicino si ottiene
+      una tassellatura poligonale molto netta, simile a un mosaico o a una superficie frammentata.
+    </p>
+
+    <p>
+      A differenza del Perlin o del Simplex Noise, il Voronoi Noise non crea superfici morbide e continue, ma strutture geometriche
+      nette e cellulari, rendendolo ideale quando si vuole simulare frammentazione, suddivisione o crescita organica basata su cellule.
+    </p>
+  </article>
+</section>
+  
 
 
 
@@ -509,17 +817,18 @@ funzioni continue a partire da un insieme di punti discreti.</p></span>
     <h2>Sitografia</h2>
 
 
-    <ul class="sources">
-      <li><a href="https://thebookofshaders.com/" target="_blank">The Book of Shaders</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://thebookofshaders.com/11/?lan=it" target="_blank">The Book of Shaders — Noise</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://tobyschachman.com/Shadershop/" target="_blank">Toby Schachman, Shadershop</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://www.simonaa.media/tutorials/looping-noise-part-1" target="_blank">Simona A. — Looping Noise Part 1</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/perlin-noise/" target="_blank">Scratchapixel — Perlin Noise</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://iquilezles.org/articles/" target="_blank">Inigo Quilez — Articles</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://mrl.cs.nyu.edu/~perlin/" target="_blank">Ken Perlin — Homepage</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://mrl.cs.nyu.edu/~perlin/noise/" target="_blank">Ken Perlin — Improved Noise</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://www.redblobgames.com/maps/terrain-from-noise/" target="_blank">Red Blob Games — Terrain from Noise</a>. Consultato il 27 maggio 2026.</li>
-      <li><a href="https://weber.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf" target="_blank">Stefan Gustavson — Simplex Noise Demystified</a>. Consultato il 27 maggio 2026.</li>
+<ul class="sources">
+      <li><a href="https://thebookofshaders.com/" target="_blank">The Book of Shaders</a></li>
+      <li><a href="https://thebookofshaders.com/11/?lan=it" target="_blank">The Book of Shaders — Noise</a></li>
+      <li><a href="https://tobyschachman.com/Shadershop/" target="_blank">Toby Schachman, Shadershop</a></li>
+      <li><a href="https://www.simonaa.media/tutorials/looping-noise-part-1" target="_blank">Simona A. — Looping Noise Part 1</a></li>
+      <li><a href="https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/perlin-noise/" target="_blank">Scratchapixel — Perlin Noise</a></li>
+      <li><a href="https://iquilezles.org/articles/" target="_blank">Inigo Quilez — Articles</a></li>
+      <li><a href="https://mrl.cs.nyu.edu/~perlin/" target="_blank">Ken Perlin — Homepage</a></li>
+      <li><a href="https://ninanananina1234.github.io/paesaggi_texture_e_perlin_noise" target="_blank">Paesaggi, texture e Perlin Noise</a></li>
+      <li><a href="https://mrl.cs.nyu.edu/~perlin/noise/" target="_blank">Ken Perlin — Improved Noise</a></li>
+      <li><a href="https://www.redblobgames.com/maps/terrain-from-noise/" target="_blank">Red Blob Games — Terrain from Noise</a></li>
+      <li><a href="https://weber.itn.liu.se/~stegu/simplexnoise/simplexnoise.pdf" target="_blank">Stefan Gustavson — Simplex Noise Demystified</a></li>
     </ul>
   </section>
 
